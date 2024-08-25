@@ -1,0 +1,126 @@
+** Music player using C**
+
+-[*] import library functions
+-[*] create structure for songs
+-[*] create structure for playlist
+-[*] function to create song node
+-[*] read csv file containg song list and store in song_pool array
+-[*] check if song_pool is empty
+-[*] check if playlist is empty
+-[*] main menu
+-[*] create playlist and add song to it
+-[*] get song info from user and add to songpool
+-[*] show song details
+-[*] display playlist
+-[*] add song to playlist
+-[*] display all songs and allow user to select songs
+
+
+=== Program Details ===
+
+Structures Used:
+
+1. SONG Structure:
+   - Members:
+     - char title[MAX_SONG_LENGTH]
+     - char album[MAX_ALBUM_LENGTH]
+     - int id
+     - int year
+     - double duration
+
+2. PlaylistNode Structure:
+   - Members:
+     - SONG* song
+     - PlaylistNode* next
+     - PlaylistNode* prev
+
+3. Playlist Structure:
+   - Members:
+     - PlaylistNode* header_node
+     - char playlist_name[MAX_STRING_SIZE]
+     - int size
+     - int pid
+     - PlaylistNode* now_playing
+
+Data Structures Used:
+
+- Doubly Linked List: Utilized in the PlaylistNode structure to create a circular doubly linked list for each playlist.
+
+Functions:
+
+1. createSong:
+   - Description: Allocates memory for a new song and initializes its details.
+   - Parameters: const char* title, const char* album, const int year, const double duration
+   - Returns: Pointer to the newly created song.
+
+2. readFromCSV:
+   - Description: Reads song information from a CSV file ("songs.csv") and adds songs to the song_pool array.
+   - Parameters: None.
+
+3. is_pool_empty:
+   - Description: Checks if the song_pool is empty.
+   - Parameters: None.
+   - Returns: 1 if the song_pool is empty, 0 otherwise.
+
+4. show_all_songs_raw:
+   - Description: Displays all songs from the song_pool.
+
+5. select_song_from_list:
+   - Description: Displays songs in the song_pool pagewise and allows the user to select a song.
+   - Parameters: None.
+   - Returns: The index of the selected song.
+
+6. init_playlists:
+   - Description: Initializes an array of playlists with default values.
+   - Parameters: Playlist Playlists[10]
+
+7. create_playlist:
+   - Description: Creates a new playlist, prompts the user for a name, and allows the addition of a song to the playlist.
+   - Parameters: None.
+
+8. add_to_playlist_circular:
+   - Description: Adds a selected song to a playlist using a circular doubly linked list.
+   - Parameters: Playlist p
+
+9. user_song_input:
+   - Description: Allows the user to input details and create a new song.
+   - Parameters: None.
+
+...
+
+Program Description:
+
+The music player program is a command-line application that serves as a simple yet functional music player. It operates with a menu-driven interface, allowing users to manage songs, playlists, and playback. Below are the key features:
+
+1. Song Management:
+   - Users can create new songs by providing details like title, album, year, and duration.
+   - Song information is read and loaded from a CSV file ("songs.csv").
+
+2. Playlist Management:
+   - Playlists are created with user-defined names.
+   - Multiple playlists are supported, each represented as a circular doubly linked list.
+   - Users can switch between playlists.
+
+3. Playlist Operations:
+   - Adding songs to the current playlist.
+   - Displaying the current playlist.
+   - Playing the next and previous songs in the playlist.
+   - Showing all available playlists.
+
+4. Song Details:
+   - Detailed information about the currently playing song is displayed.
+
+5. Playlist Deletion:
+   - Users have the option to delete the current playlist.
+
+6. User Interface:
+   - The program provides a user-friendly interface with a main menu for navigation.
+
+7. Memory Management:
+   - Proper memory allocation and deallocation are implemented to prevent memory leaks.
+
+8. File I/O:
+   - Song information is read from a CSV file during program initialization.
+
+The program runs in a loop, allowing users to interact with the music player, manage playlists, and control playback. It offers a straightforward and intuitive way for music enthusiasts to organize and enjoy their music collection.
+
